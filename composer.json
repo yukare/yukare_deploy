@@ -1,0 +1,16 @@
+{
+    "name": "yukare/yukare_deploy",
+    "type": "drupal-custom-module",
+    "description": "Set the UUID for config import/export.",
+    "keywords": ["Drupal"],
+    "license": "GPL-2.0+",
+    "homepage": "https://github.com/yukare/yukare_deploy",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://github.com/yukare/yukare_deploy/issues",
+        "source": "https://github.com/yukare/yukare_deploy"
+    },
+    "require": { 
+        "drupal/core": "^8.8||^8.9||^9"
+    }
+  }

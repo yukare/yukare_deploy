@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * This module set the UUID we need to install.
+ */
+
+/**
+ * Set the UUID of this website.
+ *
+ * By default, reinstalling a site will assign it a new random UUID, making
+ * it impossible to sync configuration with other instances. This function
+ * is called by site deployment module's .install hook.
+ */
+function yukare_deploy_set_uuid() {
+  \Drupal::configFactory()->getEditable('system.site')
+    ->set('uuid', 'd5e94a23-9c6a-4917-af00-eadb6154fd77')
+    ->save();
+  \Drupal::configFactory()->getEditable('language.entity.pt-br')
+    ->set('uuid', '89b44cf6-dc1e-4be6-9300-d9ccaeef55fc')
+    ->save();
+}
+
+/**
+ * Implements hook_install().
+ */
+function yukare_deploy_install() {
+  // This module is designed to be enabled on a brand new instance of
+  // Drupal. Settings its uuid here will tell this instance that it is
+  // in fact the same site as any other instance. Therefore, all local
+  // instances, continuous integration, testing, dev, and production
+  // instances of a codebase will have the same uuid, enabling us to
+  // sync these instances via the config management system.
+  // See also https://www.drupal.org/node/2133325
+  yukare_deploy_set_uuid();
+}
